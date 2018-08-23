@@ -770,7 +770,7 @@
                 }
             });
 
-            $.getJSON(`https://ip-api.com/json/`, function (data) {
+            $.getJSON(`https://ipapi.co/json/`, function (data) {
                 var city = data && data.city ? `${data.city}` : 'local';
                 $("#modal-city").text(city)
             });

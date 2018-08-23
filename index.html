@@ -99,15 +99,14 @@
 
         /* Safari only fix */
 
-        @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
-                {
-                .widget-form .select-outer select {
-                    padding-left: 10px;
-                }
+        @media screen and (min-color-index:0) and (-webkit-min-device-pixel-ratio:0) {
 
-                .widget-form.mobile-form .select-outer select {
-                    padding-left: 10px;
-                }
+            .widget-form .select-outer select {
+                padding-left: 10px;
+            }
+
+            .widget-form.mobile-form .select-outer select {
+                padding-left: 10px;
             }
         }
     </style>
@@ -521,7 +520,8 @@
             </div>
             <div class="modal-body">
                 <div class="modal-row">
-                    <img class="modal-subtext" src="assets/images/modal-subtext.png" alt="Claim your instant discount before the timer runs out!" />
+                    <img class="modal-subtext" src="assets/images/modal-subtext.png" alt="Claim your instant discount before the timer runs out!"
+                    />
                 </div>
                 <div class="modal-row">
                     <div class="modal-countdown"></div>
@@ -760,17 +760,17 @@
         var clock
         ijQuery(document).ready(function () {
             //setup flipclock
-            clock = $('.modal-countdown').FlipClock(3600,{
+            clock = $('.modal-countdown').FlipClock(3600, {
                 countdown: true,
                 autoStart: false,
                 callbacks: {
-                    start: function() {
+                    start: function () {
                         $('.message').html('The clock has started!');
                     }
                 }
             });
 
-            $.getJSON(`http://ip-api.com/json/`, function (data) {
+            $.getJSON(`https://ip-api.com/json/`, function (data) {
                 var city = data && data.city ? `${data.city}` : 'local';
                 $("#modal-city").text(city)
             });

@@ -760,19 +760,20 @@
         var clock
         ijQuery(document).ready(function () {
             //setup flipclock
-            clock = $('.modal-countdown').FlipClock(3600, {
+            clock = new FlipClock(ijQuery('.modal-countdown'), 5, {
                 countdown: true,
                 autoStart: false,
                 callbacks: {
-                    start: function () {
-                        $('.message').html('The clock has started!');
+                    stop: function(){
+                        if(ijQuery('#ouibounce-modal').is(":visible"))
+                            ijQuery('#ouibounce-modal').hide();
                     }
                 }
             });
 
-            $.getJSON(`https://ipapi.co/json/`, function (data) {
+            ijQuery.getJSON(`https://ipapi.co/json/`, function (data) {
                 var city = data && data.city ? `${data.city}` : 'local';
-                $("#modal-city").text(city)
+                ijQuery("#modal-city").text(city)
             });
 
             // if you want to use the 'fire' or 'disable' fn,
@@ -783,12 +784,12 @@
                 }
             });
 
-            $('body').on('click', function () {
+            ijQuery('body').on('click', function () {
                 clock.stop(); //start countdown
-                $('#ouibounce-modal').hide();
+                ijQuery('#ouibounce-modal').hide();
             });
 
-            $('#ouibounce-modal .modal-container').on('click', function (e) {
+            ijQuery('#ouibounce-modal .modal-container').on('click', function (e) {
                 e.stopPropagation();
             });
         });
